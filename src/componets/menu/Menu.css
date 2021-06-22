@@ -1,0 +1,11 @@
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 70px;
+    background-color: #61dafb;
+}
+a{
+    text-decoration: none;
+    color: brown;
+}

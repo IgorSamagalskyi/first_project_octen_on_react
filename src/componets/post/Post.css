@@ -1,0 +1,19 @@
+.post{
+    display: flex;
+    justify-content: space-between;
+    background-color: #5dd355;
+    height: auto;
+    flex-wrap:wrap;
+
+}
+.post__box{
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    margin-bottom: 20px;
+    padding: 20px 10px;
+}
+.post__box p{
+    text-align: center;
+}

@@ -10,6 +10,8 @@ export default function Posts() {
                 setPosts(response);
             });
     }, [])
+    console.log(setPosts)
+    console.log(posts)
     return (
         <div>
             {posts.map(value => <Post key={value.id} item={value}/>)}

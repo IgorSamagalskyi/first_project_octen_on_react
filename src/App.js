@@ -1,43 +1,27 @@
 import './App.css';
-import Todos from "./componets/todos/Todos";
 import Menu from "./componets/menu/Menu";
-import Posts from "./componets/posts/Posts";
+import Users from "./componets/users/Users";
+import React, { useState, useEffect } from 'react';
 
 
-let todos = [
-    {
-        name: 'bart',
-        lastName: 'simpson',
-        todo: 'goHome'
-    },
-    {
-        name: 'Megi',
-        lastName: 'simpson',
-        todo: 'goCinema'
-    },
-    {
-        name: 'Nort',
-        lastName: 'simpson',
-        todo: 'goRestorant'
-    },
-    {
-        name: 'Sasha',
-        lastName: 'simpson',
-        todo: 'goWork'
-    }
-]
-
-function App() {
-    // let postList = state[0];
-    // let setPostList = state[1];
-
+export default function App() {
+    const [users, setUsers] = useState([]);
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(response => {
+                setUsers(response)
+            })
+    }, [])
+    console.log(setUsers)
+    // console.log(users)
     return (
         <div>
             <Menu/>
-            <Todos items={todos}/>
-            <Posts/>
+            <Users items={users}/>
         </div>
     );
 }
 
-export default App;
+
+

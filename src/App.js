@@ -1,7 +1,7 @@
 import './App.css';
 import Menu from "./componets/menu/Menu";
 import Users from "./componets/users/Users";
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function App() {
@@ -13,7 +13,7 @@ export default function App() {
                 setUsers(response)
             })
     }, [])
-    console.log(setUsers)
+    // console.log(setUsers)
     // console.log(users)
     return (
         <div>

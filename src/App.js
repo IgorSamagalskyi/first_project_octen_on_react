@@ -1,43 +1,36 @@
 import './App.css';
-import Todos from "./componets/todos/Todos";
 import Menu from "./componets/menu/Menu";
-import Posts from "./componets/posts/Posts";
+import Users from "./componets/users/Users";
+import UserDetails from "./componets/user_details/UserDetails";
+import {useEffect, useState} from 'react';
+import {getUsers, getUser} from './services/API';
 
 
-let todos = [
-    {
-        name: 'bart',
-        lastName: 'simpson',
-        todo: 'goHome'
-    },
-    {
-        name: 'Megi',
-        lastName: 'simpson',
-        todo: 'goCinema'
-    },
-    {
-        name: 'Nort',
-        lastName: 'simpson',
-        todo: 'goRestorant'
-    },
-    {
-        name: 'Sasha',
-        lastName: 'simpson',
-        todo: 'goWork'
-    }
-]
+export default function App() {
+    const [users, setUsers] = useState([]);
+    const [userDetails, setUserDetails] = useState(null);
+useEffect(()=>{
+getUsers()
+    .then(response=>{
+        setUsers(response.data)
+    })
+},[])
+function selectUser(id){
+    console.log(id)
+    getUser(id).then(value => {
+        console.log(value.data)
+        setUserDetails(value.data)
+    })
 
-function App() {
-    // let postList = state[0];
-    // let setPostList = state[1];
-
+}
     return (
         <div>
             <Menu/>
-            <Todos items={todos}/>
-            <Posts/>
+            <Users items={users} selectUser={selectUser}/>
+            <hr/>
+            {userDetails && <UserDetails item={userDetails}/>}
         </div>
     );
 }
 
-export default App;
+

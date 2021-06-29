@@ -1,42 +1,56 @@
+
 import './App.css';
-import Todos from "./componets/todos/Todos";
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
+import {useState, useEffect} from 'react';
+import {getUsers} from './services/API';
+
+import Users from './componets/users/Users'
+import Posts from './componets/posts/Posts'
 import Menu from "./componets/menu/Menu";
-import Posts from "./componets/posts/Posts";
 
-
-let todos = [
-    {
-        name: 'bart',
-        lastName: 'simpson',
-        todo: 'goHome'
-    },
-    {
-        name: 'Megi',
-        lastName: 'simpson',
-        todo: 'goCinema'
-    },
-    {
-        name: 'Nort',
-        lastName: 'simpson',
-        todo: 'goRestorant'
-    },
-    {
-        name: 'Sasha',
-        lastName: 'simpson',
-        todo: 'goWork'
-    }
-]
 
 function App() {
-    // let postList = state[0];
-    // let setPostList = state[1];
+    const [users, setUsers] = useState([])
+
+    useEffect(() => {
+        getUsers()
+            .then(value => value.json())
+            .then(response => {
+                console.log(response)
+                setUsers(response)
+            })
+    })
 
     return (
-        <div>
-            <Menu/>
-            <Todos items={todos}/>
-            <Posts/>
-        </div>
+
+        <Router>
+            <div>
+
+
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to="/">Home</Link>
+                        </li>
+                        <li>
+                            <Link to="/users">Users</Link>
+                        </li>
+                        <li>
+                            <Link to="/posts">Posts</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Route path={'/users'} render={() => {
+                    return <Users/>;
+                }}/>
+
+                <Route path={'/posts'} render={() => {
+                    return <Posts/>;
+                }}/>
+            </div>
+        </Router>
+
+
     );
 }
 

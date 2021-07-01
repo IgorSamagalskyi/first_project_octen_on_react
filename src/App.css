@@ -7,6 +7,19 @@
   pointer-events: none;
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 70px;
+  background-color: #61dafb;
+}
+a{
+  text-decoration: none;
+  color: brown;
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -24,15 +37,3 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

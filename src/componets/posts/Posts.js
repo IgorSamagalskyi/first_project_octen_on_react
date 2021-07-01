@@ -1,8 +1,10 @@
-export default function Posts(){
+import Post from './Post'
+
+export default function Posts({items}){
 
 return(
     <div>
-        Posts
+        {items && items.map(value => <Post key={value.id} item={value}/>)}
     </div>
 );
 }

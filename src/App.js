@@ -1,43 +1,19 @@
-import './App.css';
-import Todos from "./componets/todos/Todos";
-import Menu from "./componets/menu/Menu";
-import Posts from "./componets/posts/Posts";
+import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
 
-let todos = [
-    {
-        name: 'bart',
-        lastName: 'simpson',
-        todo: 'goHome'
-    },
-    {
-        name: 'Megi',
-        lastName: 'simpson',
-        todo: 'goCinema'
-    },
-    {
-        name: 'Nort',
-        lastName: 'simpson',
-        todo: 'goRestorant'
-    },
-    {
-        name: 'Sasha',
-        lastName: 'simpson',
-        todo: 'goWork'
-    }
-]
+import Users from './componets/Users/Users'
 
-function App() {
-    // let postList = state[0];
-    // let setPostList = state[1];
+export default function App() {
 
     return (
-        <div>
-            <Menu/>
-            <Todos items={todos}/>
-            <Posts/>
-        </div>
+            <Router>
+                <div>
+                    <Link to={'/users'}>users page</Link>
+                    <Link to={'/posts'}>users page</Link>
+                </div>
+
+                <Route path={'/users'} component={Users}/>
+                <Route path={'/users'} component={Users}/>
+            </Router>
     );
 }
-
-export default App;
